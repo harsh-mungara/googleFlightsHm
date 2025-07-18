@@ -1,97 +1,95 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Google Flights Clone
 
-# Getting Started
+A React Native mobile application that replicates Google Flights functionality with authentication and real-time flight search using the Sky Scrapper API.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Features
 
-## Step 1: Start Metro
+### 🔐 Authentication
+- **Firebase Authentication**: Secure user registration and login
+- **Email/Password**: Traditional authentication method
+- **Password Reset**: Forgot password functionality
+- **User Profile**: Display user information and settings
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+### ✈️ Flight Search
+- **Real-time Search**: Integration with Sky Scrapper API
+- **Advanced Filters**: Origin, destination, dates, passengers, cabin class
+- **Trip Types**: One-way and round-trip options
+- **Flight Results**: Detailed flight information with pricing
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### 🎨 UI/UX
+- **Navigation**: Tab-based navigation with stack navigation
+- **Loading States**: Proper loading indicators and error handling
 
-```sh
-# Using npm
-npm start
+### 📱 Screens
+- **Home Screen**: Welcome dashboard with quick actions and popular destinations
+- **Search Screen**: Comprehensive flight search form
+- **Flight Results**: Display search results with flight details
+- **Profile Screen**: User account management and settings
 
-# OR using Yarn
-yarn start
+### Run the Application
+
+#### Android
+```bash
+# Start Metro bundler
+npx react-native start
+
+# Run on Android
+npx react-native run-android
 ```
 
-## Step 2: Build and run your app
+#### iOS
+```bash
+# Install iOS dependencies
+cd ios && pod install && cd ..
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+# Run on iOS
+npx react-native run-ios
 ```
 
-### iOS
+## Project Structure
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```
+src/google-flights-clone/
+├── App.tsx                    # Main application component
+├── context/                   # React Context providers
+│   ├── AuthContext.tsx       # Authentication state management
+│   └── FlightContext.tsx     # Flight search state management
+├── hooks/                     # Custom React hooks
+│   └── useAuth.ts            # Authentication hook
+├── navigation/                # Navigation configuration
+│   ├── AuthNavigator.tsx     # Authentication flow navigation
+│   └── MainNavigator.tsx     # Main app navigation
+├── screens/                   # Application screens
+│   ├── auth/                 # Authentication screens
+│   │   ├── LoginScreen.tsx
+│   │   ├── SignUpScreen.tsx
+│   │   └── ForgotPasswordScreen.tsx
+│   ├── HomeScreen.tsx        # Home dashboard
+│   ├── SearchScreen.tsx      # Flight search form
+│   ├── FlightResultsScreen.tsx # Search results
+│   └── ProfileScreen.tsx     # User profile
+└── services/                  # API services
+    └── flightService.ts      # Sky Scrapper API integration
 ```
 
-Then, and every time you update your native dependencies, run:
+## API Integration
 
-```sh
-bundle exec pod install
-```
+The application integrates with the Sky Scrapper API to provide real-time flight search capabilities:
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+### Endpoints Used
+- **Flight Search**: `/api/v1/flights/search`
+- **Airport Suggestions**: `/api/v1/flights/airports`
 
-```sh
-# Using npm
-npm run ios
+### Features
+- Real-time flight pricing
+- Multiple cabin class options
+- Flexible date selection
+- Passenger count management
+- Round-trip and one-way options
 
-# OR using Yarn
-yarn ios
-```
+## Authentication Flow
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+1. **Sign Up**: Users create accounts with email and password
+2. **Sign In**: Existing users authenticate with credentials
+3. **Password Reset**: Users can reset passwords via email
+4. **Profile Management**: Users can view and manage their accounts
