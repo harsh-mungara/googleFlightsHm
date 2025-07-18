@@ -93,3 +93,5 @@ The application integrates with the Sky Scrapper API to provide real-time flight
 2. **Sign In**: Existing users authenticate with credentials
 3. **Password Reset**: Users can reset passwords via email
 4. **Profile Management**: Users can view and manage their accounts
+
+https://github.com/user-attachments/assets/1059c460-69bb-4adf-be9e-074deee83f9f
